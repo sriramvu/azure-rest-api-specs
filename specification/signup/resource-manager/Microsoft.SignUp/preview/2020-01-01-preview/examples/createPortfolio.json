@@ -1,0 +1,18 @@
+{
+  "parameters": {
+    "api-version": "2020-01-01-preview",
+    "body": {
+      "portfolioId": "returnOfTheJediEP10",
+      "description": "This is the Return of the Jedi - EP10",
+      "tenantId": "daded1ae-7521-4301-960a-71865a3b7d2b",
+      "objectId": "beaf7636-a6dd-4a53-aa68-965a2bb2377f"
+    }
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "billingProfileId": "/providers/Microsoft.Billing/billingAccounts/9b093f23-a999-5af3-33ed-99e90e943d2f/billingProfiles/7cbfdcb7-1f5c-44ac-952b-c37fb706f769"
+      }
+    }
+  }
+}

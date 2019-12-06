@@ -1,0 +1,30 @@
+{
+  "parameters": {
+    "api-version": "2020-01-01-preview",
+    "body": {
+      "portfolioId": "returnOfTheJediEP10",
+      "taskOrderId": "Jedi Training",
+	  "lineItems": [
+		{
+			"clinIdentifier": "CLIN001",
+		    "amount": 50,
+		    "startDate" : "2019-12-04 20:16:25.644",
+		    "endDate" : "2020-12-04 20:16:25.644"
+		},
+		{
+			"clinIdentifier": "CLIN002",
+		    "amount": 50,
+		    "startDate" : "2019-12-04 20:16:25.644",
+		    "endDate" : "2020-12-04 20:16:25.644"
+		}
+  		]
+    }
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "message": "Successfully created TaskOrder for Portfolio: returnOfTheJediEP10."
+      }
+    }
+  }
+}

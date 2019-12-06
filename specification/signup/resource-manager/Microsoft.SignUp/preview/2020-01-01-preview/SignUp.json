@@ -1,0 +1,453 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "2020-01-01-preview",
+    "title": "SignUpClient",
+    "description": "Signup client provides an interface to create tenant, portfolio, taskorder, and Get & Create Premium AAD."
+  },
+  "schemes": [
+    "https"
+  ],
+  "host": "management.azure.com",
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+  "providers/Microsoft.SignUp/createTenant": {
+      "post": {
+        "description": "The operation to create a new tenant.",
+        "operationId": "SignUp_CreateTenant",
+        "x-ms-examples": {
+          "createTenant": {
+            "$ref": "./examples/createTenant.json"
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Normal response for a successful tenant creation.",
+            "schema": {
+              "$ref": "#/definitions/TenantCreationResult"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "$ref": "#/parameters/apiVersionParameter"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "The tenant creation parameters.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/TenantCreationParameters"
+            }
+          }
+        ]
+      }
+    },
+  "providers/Microsoft.SignUp/createPortfolio": {
+      "post": {
+        "description": "The operation to create a new portfolio.",
+        "operationId": "SignUp_CreatePortfolio",
+        "x-ms-examples": {
+          "createTenant": {
+            "$ref": "./examples/createPortfolio.json"
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Normal response for a successful portfolio creation.",
+            "schema": {
+              "$ref": "#/definitions/PortfolioCreationResult"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "$ref": "#/parameters/apiVersionParameter"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "The tenant creation parameters.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/PortfolioCreationParameters"
+            }
+          }
+        ]
+      }
+    },
+  "providers/Microsoft.SignUp/createTaskOrder": {
+      "post": {
+        "description": "The operation to create a new task order.",
+        "operationId": "SignUp_CreateTaskOrder",
+        "x-ms-examples": {
+          "createTenant": {
+            "$ref": "./examples/createTaskOrder.json"
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Normal response for a successful task order creation.",
+            "schema": {
+              "$ref": "#/definitions/TaskOrderCreationResult"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "$ref": "#/parameters/apiVersionParameter"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "The tenant creation parameters.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/TaskOrderCreationParameters"
+            }
+          }
+        ]
+      }
+    },
+  "providers/Microsoft.SignUp/purchaseAadPremium": {
+      "post": {
+        "description": "The operation to purchase AAD premium.",
+        "operationId": "SignUp_PurchaseAadPremium",
+        "x-ms-examples": {
+          "createTenant": {
+            "$ref": "./examples/purchaseAadPremium.json"
+          }
+        },
+        "responses": {
+          "202": {
+            "description": "Accepted. purchase AAD premium is in progress.",
+            "headers": {
+              "Location": {
+                "description": "The URL where the status of the asynchronous operation can be checked.",
+                "type": "string"
+              },
+              "Retry-After": {
+                "description": "The amount of delay to use while the status of the operation is checked. The value is expressed in seconds.",
+                "type": "integer"
+              }
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "$ref": "#/parameters/apiVersionParameter"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "The AAD premium purchase parameters.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/AadPremiumPurchaseParameters"
+            }
+          }
+        ]
+      }
+    },
+    "providers/Microsoft.SignUp/purchaseAadPremiumStatus/{purchaseAadPremiumStatusId}": {
+      "get": {
+        "description": "Get the status purchase AAD premium.",
+        "operationId": "SignUp_GetPurchaseAadPremiumStatus",
+        "x-ms-examples": {
+          "getPendingSubscriptionOperations": {
+            "$ref": "./examples/getPurchaseAadPremiumStatus.json"
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful completion of the asynchronous operation",
+            "schema": {
+              "$ref": "#/definitions/AadPremiumPurchaseResult"
+            }
+          },
+          "202": {
+            "description": "Accepted. purchase AAD premium is in progress.",
+            "headers": {
+              "Location": {
+                "description": "The URL where the status of the asynchronous operation can be checked.",
+                "type": "string"
+              },
+              "Retry-After": {
+                "description": "The amount of delay to use while the status of the operation is checked. The value is expressed in seconds.",
+                "type": "integer"
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "$ref": "#/parameters/apiVersionParameter"
+          },
+          {
+            "name": "purchaseAadPremiumStatusId",
+            "in": "path",
+            "description": "The status id, which can be found from the Location field in the purchase aad premium operation response header.",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "$ref": "#/parameters/apiVersionParameter"
+          }
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "TenantCreationResult": {
+      "description": "The created tenant details.",
+      "properties": {
+        "tenantId": {
+          "description": "The created tenant id.",
+          "type": "string"
+        },
+        "userId": {
+          "description": "User name or alias.",
+          "type": "string"
+        },
+        "objectId": {
+          "description": "Object id corresponding to the user.",
+          "type": "string"
+        }
+      }
+    },
+    "TenantCreationParameters": {
+      "description": "The parameters required to create a new tenant.",
+      "required": [
+        "userId",
+        "password",
+        "domainName",
+		"firstName",
+		"lastName",
+		"countryCode"
+      ],
+      "properties": {
+        "userId": {
+          "description": "User name or alias.",
+          "type": "string"
+        },
+        "password": {
+          "description": "Password for the corresponding user name.",
+          "type": "string"
+        },
+        "domainName": {
+          "description": "Domain name in which tenant needs to be created.",
+          "type": "string"
+        },
+        "firstName": {
+          "description": "First name of the user.",
+          "type": "string"
+        },
+        "lastName": {
+          "description": "Last name of the user.",
+          "$ref": "#/definitions/AdPrincipal"
+        },
+        "countryCode": {
+          "description": "Country code.",
+          "type": "string"
+        },
+        "passwordRecoveryEmailAddress": {
+          "description": "Email address used to communicate while recovering password.",
+          "type": "string"
+        }		
+      }
+    },
+    "PortfolioCreationResult": {
+      "description": "The created billing profile details.",
+      "properties": {
+        "billingProfileId": {
+          "description": "The billing profile id.",
+          "type": "string"
+        }
+      }
+    },
+    "PortfolioCreationParameters": {
+      "description": "The parameters required to create a new portfolio.",
+      "required": [
+        "portfolioId",
+        "description",
+        "tenantId",
+		"objectId"
+      ],
+      "properties": {
+        "portfolioId": {
+          "description": "Portfolio id to be created.",
+          "type": "string"
+        },
+        "description": {
+          "description": "Description about the portfolio.",
+          "type": "string"
+        },
+        "tenantId": {
+          "description": "Tenant id.",
+          "type": "string"
+        },
+        "objectId": {
+          "description": "Object id corresponding to the user.",
+          "type": "string"
+        }		
+      }
+    },
+    "TaskOrderCreationResult": {
+      "description": "Successful task order creation message.",
+      "properties": {
+        "message": {
+          "description": "Successful task order creation message with portfolio id.",
+          "type": "string"
+        }
+      }
+    },
+    "TaskOrderCreationParameters": {
+      "description": "The parameters required to create a new task order.",
+      "required": [
+        "portfolioId",
+        "taskOrderId"
+      ],
+      "properties": {
+        "portfolioId": {
+          "description": "Portfolio id to which task order belongs to.",
+          "type": "string"
+        },
+        "taskOrderId": {
+          "description": "Task order id to be created.",
+          "type": "string"
+        },
+        "lineItems": {
+          "description": "List of clin items.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/LineItems"
+          }
+        }		
+      }
+    },
+    "LineItems": {
+      "description": "Clin information.",
+      "type": "object",
+      "properties": {
+        "clinIdentifier": {
+          "description": "Clind identifier.",
+          "type": "string"
+        },
+        "amount": {
+          "description": "Amount allocated to clin.",
+          "type": "long"
+        },
+        "startDate": {
+          "description": "Corresponding start date for the clin in dateTime format (ex 2019-12-04 20:16:25.644).",
+          "type": "DateTime"
+        },
+        "endDate": {
+          "description": "Corresponding end date for the clin in dateTime format (ex 2019-12-04 20:16:25.644).",
+          "type": "DateTime"
+        }
+      }
+    },
+    "AadPremiumPurchaseResult": {
+      "description": "Purchase status result.",
+      "properties": {
+        "status": {
+          "description": "Status of the purchase AAD premium operation.",
+          "type": "string"
+        }
+      }
+    },
+    "AadPremiumPurchaseParameters": {
+      "description": "The parameters required to create a new portfolio.",
+      "required": [
+        "portfolioId",
+        "skuId",
+        "tenantId"
+      ],
+      "properties": {
+        "portfolioId": {
+          "description": "Portfolio id.",
+          "type": "string"
+        },
+        "skuId": {
+          "description": "SKU id.",
+          "type": "string"
+        },
+        "tenantId": {
+          "description": "Tenant id.",
+          "type": "string"
+        }
+      }
+    },
+    "ErrorResponse": {
+      "description": "Describes the format of Error response.",
+      "type": "object",
+      "properties": {
+        "code": {
+          "description": "Error code",
+          "type": "string"
+        },
+        "message": {
+          "description": "Error message indicating why the operation failed.",
+          "type": "string"
+        }
+      }
+    }
+  },
+  "parameters": {
+    "apiVersionParameter": {
+      "name": "api-version",
+      "in": "query",
+      "required": true,
+      "type": "string",
+      "description": "Version of the API to be used with the client request. Current version is 2020-01-01-preview"
+    }
+  },
+  "security": [
+    {
+      "azure_auth": [
+        "user_impersonation"
+      ]
+    }
+  ],
+  "securityDefinitions": {
+    "azure_auth": {
+      "type": "oauth2",
+      "authorizationUrl": "https://login.microsoftonline.com/common/oauth2/authorize",
+      "flow": "implicit",
+      "description": "Azure Active Directory OAuth2 Flow",
+      "scopes": {
+        "user_impersonation": "impersonate your user account"
+      }
+    }
+  }
+}

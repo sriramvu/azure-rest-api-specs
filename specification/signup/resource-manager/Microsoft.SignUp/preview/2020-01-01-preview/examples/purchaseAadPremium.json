@@ -1,0 +1,18 @@
+{
+  "parameters": {
+    "api-version": "2020-01-01-preview",
+    "body": {
+      "portfolioId": "returnOfTheJediEP10",
+      "skuId": "AADP1",
+	  "tenantId": "daded1ae-7521-4301-960a-71865a3b7d2b",
+	  }
+  },
+  "responses": {
+    "202": {
+      "headers": {
+        "Location": "purchaseStatusQueryURL",
+        "Retry-After": 8
+      }
+    }
+  }
+}

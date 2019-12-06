@@ -1,0 +1,22 @@
+{
+  "parameters": {
+    "api-version": "2020-01-01-preview",
+    "body": {
+      "userId": "obiwan",
+	  "password": "JediMaster$123",
+      "domainName": "obiwankenobi",
+      "firstName": "Obi-Wan",
+      "lastName": "Kenobi",
+	  "countryCode": "US",
+    }
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "userId": "obiwan",
+		"tenantId": "daded1ae-7521-4301-960a-71865a3b7d2b",
+		"objectId": "beaf7636-a6dd-4a53-aa68-965a2bb2377f"
+      }
+    }
+  }
+}

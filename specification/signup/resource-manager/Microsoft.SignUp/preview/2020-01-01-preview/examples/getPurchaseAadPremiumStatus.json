@@ -1,0 +1,19 @@
+{
+  "parameters": {
+    "purchaseAadPremiumStatusId": "purchaseAadPremiumId",
+    "api-version": "2020-01-01-preview"
+  },
+  "responses": {
+    "202": {
+      "headers": {
+        "Location": "providers/Microsoft.SignUp/purchaseAadPremiumStatus/purchaseAadPremiumId",
+        "Retry-After": 8
+      }
+    },
+    "200": {
+      "body": {
+        "status": "success"
+      }
+    }
+  }
+}
